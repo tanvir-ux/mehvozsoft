@@ -1,73 +1,390 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mehvozsoft | Modern Apps & Games</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=325098691542099&autoLogAppEvents=1"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehvozsoft | Smart Apps & Game Development</title>
+    <meta name="description" content="Production ready mobile, web, desktop apps and games. 8+ years of experience using AI and cutting edge tech.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1', // Indigo
+                            600: '#4f46e5',
+                            900: '#1e1b4b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
-  <!-- Navbar -->
-  <nav class="bg-gray-900 text-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Mehvozsoft</h1>
-      <div class="space-x-4 hidden md:block">
-        <a href="#portfolio" class="hover:text-indigo-400">Portfolio</a>
-        <a href="#facebook" class="hover:text-indigo-400">Facebook</a>
-        <a href="#contact" class="hover:text-indigo-400">Contact</a>
-      </div>
-    </div>
-  </nav>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=325098691542099&autoLogAppEvents=1" nonce="yww28Tly"></script>
 
-  <!-- Hero Section -->
-  <section class="max-w-7xl mx-auto px-6 md:flex md:items-center md:space-x-10 py-16">
-    <div class="md:w-1/2">
-      <h1 class="text-4xl md:text-5xl font-extrabold">Building Smart Web, Mobile & Game Apps</h1>
-      <p class="mt-4 text-lg text-gray-600">With 8+ years of experience delivering production‑ready software solutions using modern tools and AI‑powered technologies.</p>
-      <a href="#contact" class="mt-6 inline-block bg-indigo-600 text-white px-6 py-3 rounded-md shadow hover:bg-indigo-700">Hire Us</a>
-    </div>
-    <div class="md:w-1/2 mt-10 md:mt-0">
-      <img src="ai.webp" class="rounded-xl shadow-lg w-full" />
-    </div>
-  </section>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-2xl font-extrabold text-white tracking-tight">
+                        mehvoz<span class="text-brand-500">soft</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-brand-500 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#portfolio" class="hover:text-brand-500 text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="#social" class="hover:text-brand-500 text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Community</a>
+                        <a href="#contact" class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2 rounded-full text-sm font-medium transition-transform transform hover:scale-105 shadow-lg shadow-brand-500/30">Contact Us</a>
+                    </div>
+                </div>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="bg-white py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-10">Our Apps</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="https://buyorrent-angular.web.app/" target="_blank" class="p-6 bg-gray-100 rounded-xl shadow hover:bg-gray-200">BuyOrRent</a>
-        <a href="https://steprimo.com/android/us/app/com.ionicframework.expressentrycalculator/Express-Entry-Calculator/" target="_blank" class="p-6 bg-gray-100 rounded-xl shadow hover:bg-gray-200">Express Entry Calculator</a>
-        <a href="https://www.luckymodapk.com/adhaan-mod/io.mehvozsoft.adhan/" target="_blank" class="p-6 bg-gray-100 rounded-xl shadow hover:bg-gray-200">Adhaan</a>
-        <a href="https://steprimo.com/android/us/app/com.ionicframework.eiensteincalculator/Einstein-Calculator-EMC2/" target="_blank" class="p-6 bg-gray-100 rounded-xl shadow hover:bg-gray-200">Einstein Calculator</a>
-      </div>
-    </div>
-  </section>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-  <!-- Facebook Page Embed -->
-  <section id="facebook" class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-6">Facebook Updates</h2>
-      <div class="fb-page" data-href="https://www.facebook.com/mehvozsoft" data-tabs="timeline" data-width="500" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
-    </div>
-  </section>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-slate-800 shadow-xl border-b border-slate-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" onclick="toggleMobileMenu()" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Home</a>
+                <a href="#portfolio" onclick="toggleMobileMenu()" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Portfolio</a>
+                <a href="#social" onclick="toggleMobileMenu()" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Community</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="text-brand-500 block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Contact Form -->
-  <section id="contact" class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-      <form action="mailto:mehvozsoft@gmail.com" method="POST" enctype="text/plain" class="space-y-4 bg-gray-100 p-6 rounded-xl shadow">
-        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 rounded border" required />
-        <input type="email" name="email" placeholder="Your Email" class="w-full p-3 rounded border" required />
-        <textarea name="message" placeholder="Your Message" class="w-full p-3 rounded border h-32" required></textarea>
-        <button type="submit" class="bg-indigo-600 text-white px-5 py-3 rounded-md hover:bg-indigo-700">Send Message</button>
-      </form>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-600 blur-[128px] opacity-20"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-purple-600 blur-[100px] opacity-20"></div>
+            <!-- Grid Pattern -->
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+        </div>
 
-  <footer class="text-center py-6 text-gray-500">© 2025 Mehvozsoft. All Rights Reserved.</footer>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+            <div class="inline-flex items-center px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 backdrop-blur-sm mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-brand-500 mr-2 animate-pulse"></span>
+                <span class="text-sm font-medium text-slate-300">8+ Years of Excellence</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+                Your Vision. <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400">Our Code.</span><br>
+                Production Ready.
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10">
+                Mehvozsoft is your one destination for high-quality mobile, web, desktop, and game development. We use cutting-edge AI technology to bring your ideas to life.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 rounded-lg bg-brand-600 text-white font-bold text-lg hover:bg-brand-500 transition-all shadow-lg shadow-brand-600/30 flex items-center justify-center">
+                    Start a Project <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#portfolio" class="px-8 py-4 rounded-lg bg-slate-800 text-white font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 flex items-center justify-center">
+                    View Our Work
+                </a>
+            </div>
 
+            <!-- Tech Stack Icons -->
+            <div class="mt-16 pt-8 border-t border-slate-800">
+                <p class="text-sm text-slate-500 mb-6 uppercase tracking-wider font-semibold">Technologies We Master</p>
+                <div class="flex flex-wrap justify-center gap-8 text-slate-500 grayscale opacity-70 hover:grayscale-0 transition-all duration-500">
+                    <i class="fab fa-android text-4xl hover:text-green-500"></i>
+                    <i class="fab fa-apple text-4xl hover:text-gray-100"></i>
+                    <i class="fab fa-angular text-4xl hover:text-red-500"></i>
+                    <i class="fab fa-react text-4xl hover:text-cyan-400"></i>
+                    <i class="fab fa-unity text-4xl hover:text-white"></i>
+                    <i class="fas fa-brain text-4xl hover:text-pink-500" title="AI Integration"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">From utility tools to complex calculators, explore what we've built.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Express Entry -->
+                <div class="group glass-panel rounded-2xl p-1 hover:bg-slate-800/80 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-slate-900 rounded-xl h-full p-6 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-green-500/10 rounded-full blur-2xl"></div>
+                        <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center mb-4 border border-slate-700">
+                            <i class="fas fa-calculator text-2xl text-green-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Express Entry Calculator</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Calculate your CRS score for Canadian immigration easily. A top-rated utility app built with Ionic.</p>
+                        <div class="mt-auto">
+                            <a href="https://steprimo.com/android/us/app/com.ionicframework.expressentrycalculator/Express-Entry-Calculator/" target="_blank" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium">
+                                View App <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: BuyOrRent -->
+                <div class="group glass-panel rounded-2xl p-1 hover:bg-slate-800/80 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-slate-900 rounded-xl h-full p-6 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+                        <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center mb-4 border border-slate-700">
+                            <i class="fas fa-home text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">BuyOrRent</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Smart financial decision tool to help users decide between buying real estate or renting. Angular powered web app.</p>
+                        <div class="mt-auto">
+                            <a href="https://buyorrent-angular.web.app/" target="_blank" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium">
+                                Launch Web App <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Adhaan -->
+                <div class="group glass-panel rounded-2xl p-1 hover:bg-slate-800/80 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-slate-900 rounded-xl h-full p-6 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl"></div>
+                        <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center mb-4 border border-slate-700">
+                            <i class="fas fa-mosque text-2xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Adhaan</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Precise prayer times and notifications. A beautifully designed utility for daily use.</p>
+                        <div class="mt-auto">
+                            <a href="https://play.google.com/store/apps/details?id=io.mehvozsoft.adhan" target="_blank" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium">
+                                View on Store <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Einstein Calculator -->
+                <div class="group glass-panel rounded-2xl p-1 hover:bg-slate-800/80 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-slate-900 rounded-xl h-full p-6 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
+                        <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center mb-4 border border-slate-700">
+                            <i class="fas fa-atom text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Einstein Calculator</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Advanced scientific calculations with a user-friendly interface. E=mc² within reach.</p>
+                        <div class="mt-auto">
+                            <a href="https://steprimo.com/android/us/app/com.ionicframework.eiensteincalculator/Einstein-Calculator-EMC2/" target="_blank" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium">
+                                View Details <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Facebook & Social Section -->
+    <section id="social" class="py-20 bg-slate-800/50 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6">Join Our Community</h2>
+                    <p class="text-slate-400 mb-8 text-lg">
+                        Stay updated with our latest releases, tech tips, and company news on Facebook. We are building a community of tech enthusiasts.
+                    </p>
+                    <div class="flex space-x-4 mb-8">
+                        <a href="https://www.facebook.com/mehvozsoft" class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-700 text-white flex items-center justify-center hover:bg-slate-600 transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-slate-700 text-white flex items-center justify-center hover:bg-slate-600 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Facebook Plugin Container -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="bg-white p-1 rounded-lg shadow-xl max-w-full overflow-hidden">
+                        <div class="fb-page" 
+                             data-href="https://www.facebook.com/mehvozsoft" 
+                             data-tabs="timeline" 
+                             data-width="500" 
+                             data-height="500" 
+                             data-small-header="false" 
+                             data-adapt-container-width="true" 
+                             data-hide-cover="false" 
+                             data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/mehvozsoft" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/mehvozsoft">Mehvozsoft</a>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-slate-900">
+            <!-- Decor -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-900/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glass-panel rounded-2xl p-8 md:p-12 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-white mb-4">Get in Touch</h2>
+                    <p class="text-slate-400">Have an app idea? Need a consultation? Send us a message.</p>
+                </div>
+
+                <form id="contactForm" class="space-y-6" onsubmit="handleMailto(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                        <textarea id="message" rows="4" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 rounded-lg transition-all transform hover:scale-[1.01] shadow-lg shadow-brand-600/25">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="mailto:mehvozsoft@gmail.com" class="text-slate-400 hover:text-white transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-envelope"></i> mehvozsoft@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-bold text-white">mehvoz<span class="text-brand-500">soft</span></span>
+                <p class="text-slate-500 text-sm mt-1">&copy; <span id="year"></span> Mehvozsoft. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6 text-slate-400">
+                <a href="#" class="hover:text-white transition-colors text-sm">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors text-sm">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-slate-900/95', 'backdrop-blur-sm', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-slate-900/95', 'backdrop-blur-sm', 'shadow-lg');
+            }
+        });
+
+        // Mailto Handler
+        function handleMailto(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const subject = encodeURIComponent(`New Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            
+            window.location.href = `mailto:mehvozsoft@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Visual feedback
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Opening Email Client...';
+            btn.classList.add('bg-green-600');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('bg-green-600');
+                e.target.reset();
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
